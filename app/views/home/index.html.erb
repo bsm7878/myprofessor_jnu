@@ -1,0 +1,342 @@
+    <!-- ******HEADER****** --> 
+    <header id="header" class="header" style = "z-index:1;">  
+        <div class="container">            
+            <h1 class="logo pull-left">
+                <a class="scrollto" href="#promo">
+                    <img src = "logo.png" style = "width: 180px; height: 50px; " />
+                </a>
+            </h1><!--//logo-->              
+            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->            
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="scrollto list" href="#about">무엇?</a></li>
+                        <li class="nav-item"><a class="scrollto list" href="#features">약속</a></li>
+                        <li class="nav-item"><a class="scrollto list" href="#docs">사용법</a></li>
+                        <li class="nav-item"><a class="scrollto list" href="#contact">문의</a></li>
+                        
+                        <% unless user_signed_in? %>
+                            <li class="nav-item"><a class="list" href="/users/sign_up">회원가입</a></li>
+                            <li class="nav-item"><a class="list" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" style="cursor:pointer">로그인</a></li>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel" style = "font-size: 30px;">Log In</h4>
+                                  </div>
+                                  <div class="modal-body login_form">
+                                    <!-- 회원가입 form -->
+                                    <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                                      <%= f.text_field :email, class: 'form-control', :placeholder => "이메일을입력해주세요"  %><br>
+                                      <%= f.password_field :password, class: 'form-control', :placeholder => "비밀번호를입력해주세요"  %><br>
+                                      <%= link_to "비밀번호찾기", new_password_path(:user) %>
+        
+                                      <div class="modal-footer">
+                                          <%= f.submit '들어가기', class: 'btn btn-primary'   %>
+                                          
+                                      </div>
+                                    <% end %>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        <% else %>
+                            <li class="nav-item"><a class="list" href="/users/sign_out">로그아웃</a></li>
+                        <% end %>
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->
+        </div>
+    </header><!--//header-->
+    
+    <!-- ******PROMO****** -->
+    <section id="promo" class="promo section offset-header" style = "z-index:-1;">
+        <div class="container text-center">
+            <div class = "col-md-3"></div>
+            <div class = "col-md-6">
+                <img src = "logo.png" class = "title" style = "width:100%; height:130px;">    
+            </div>
+            <div class = "col-md-3"></div>
+            <!-- 검색 폼 시작 -->
+            <p class="intro">
+                <form action = "/home/show" method = "GET">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name = "professor" id="exampleInput1" placeholder="교수님명을 입력해주세요">
+                  </div>
+                  <div id = "wrapper">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+            </p>
+            <!-- 검색 폼 종료 -->
+            
+            
+            
+            <ul class="meta list-inline">
+                <% if user_signed_in? %>
+                <% if @exam_count > 2 %>
+                <li class="nav-item"><a class="list" data-toggle="modal" data-target="#exampleModal_2" style="cursor:pointer;">기출문제 검색</a></li>
+                            <div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel" style = "font-size: 30px;">검색</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      
+                                    <!-- 기출문제 검색 폼 시작 -->
+                                    <form class="form-horizontal" action = "/home/search" method ="GET">
+                                          <div class="form-group">
+                                            <div class="col-sm-12">
+                                              <input type="text" class="form-control" name = "course" style="width:100%;"  placeholder="과목명을 입력해주세요">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <button type="submit" class="btn btn-primary">검색하기</button>
+                                          </div>
+                                    </form>
+                                    <!-- 기출문제 검색 폼 끝 -->
+                                    
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                <li><a href="/home/show_exam" >모든 기출문제 보기</a></li>
+                <% end %>
+                <% end %>
+            </ul><!--//meta-->        
+            
+            
+            
+            
+        </div><!--//container-->
+        
+        
+    </section><!--//promo-->
+    
+    <!-- ******ABOUT****** --> 
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="title text-center"><span style = "color:#FFC000">무엇</span>인가요? </h2>
+            <p class="intro text-center">
+                수업을 듣기에 앞서 가장 중요한건 본인에게 맞는 교수님을 찾는게 아닐까 합니다.<br> 
+                사람마다 원하는 교수님도 다르고 바라는 이미지도 다르지만
+                가장 공통적인 요소 <span style = "color:#FFC000">6가지</span>로 함축하여 본인에게 가장 알맞는 교수님을 찾는것이 목표입니다.    
+            </p>
+            <div class="row">
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">학점</h3>
+                        <p>학점을 주실때 상대적으로 꽉꽉 +를 채워서 잘 주시면 <span class = "point_a">A+</span>를 그렇지 않고 학점에 조금 인색하시면 <span class = "point_c">C+</span>를 주시면 됩니다. </p>
+                    </div><!--//content-->
+                </div><!--//item-->
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">시험</h3>
+                        <p>시험의 난의도를 의미하며 시험공부함에 있어 또는 시험에 있어 상대적으로 가볍고 쉬우면 <span class = "point_a">A+</span>를 그렇지 않고 시험공부에 있어 힘들고 시험 문제가 어려우면 <span class = "point_c">C+</span>를 주시면 됩니다.</p>
+                    </div><!--//content-->
+                </div><!--//item-->
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-crosshairs"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">과제</h3>
+                        <p>과제가 없고 있더라도 할만한 정도면 <span class = "point_a">A+</span>를 과제가 많고 어렵다면 <span class = "point_c">C+</span>를 주시면 됩니다.</p><br><br><br><br>
+                    </div><!--//content-->
+                </div><!--//item-->           
+                <div class="clearfix visible-md"></div>    
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-tablet"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">강의력</h3>
+                        <p>대학은 지식의 전당이자 보금자리입니다. 강의를 통해 정말 이것이 학문이고 너무나 남는게 많은 알찬 강의였다면 <span class = "point_a">A+</span>를 그렇지 않고 조금 아쉽고 나중에 PPT보고 공부해야겠다는 생각이 들면 <span class = "point_c">C+</span>를 주시면 됩니다.</p>
+                    </div><!--//content-->
+                </div><!--//item-->                
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-code"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">재미</h3>
+                        <p>앉아서 수업듣는 학생보다 스셔서 강의를 하는 교수님의 열정은 정말 대단합니다. 수업에 학생의 참여를 유도하여 수업이 재밌고 active하다면 <span class = "point_a">A+</span>를 그렇지 않고 다소 잠이 오는 시간이면 <span class = "point_c">C+</span>를 주시면 됩니다.</p>
+                    </div><!--//content-->
+                </div><!--//item-->
+                <div class="item col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-holder">
+                        <i class="fa fa-coffee"></i>
+                    </div>
+                    <div class="content">
+                        <h3 class="sub-title">팀플</h3>
+                        <p>교수님이 원하시는 팀플은 협력, 협동, 공동체의식 등이지만 실제 학생이 배우는 팀플은 배신, 배반, 추격, 잠수입니다. 팀플이 없거나 있어도 비중이 낮고 할만하면 <span class = "point_a">A+</span>를 그렇지 않고 팀플의 비중이 높고 어려우면 <span class = "point_c">C+</span>를 주시면 됩니다.</p>
+                    </div><!--//content-->
+                </div><!--//item-->               
+            </div><!--//row-->            
+        </div><!--//container-->
+    </section><!--//about-->
+    
+    <!-- ******FEATURES****** --> 
+    <section id="features" class="features section">
+        <div class="container text-center">
+            <h2 class="title">PROMISE</h2>
+            <ul class="feature-list list-unstyled">
+                <li><i class="fa fa-check"></i> 욕설을 자제해 주십시요.</li>
+                <li><i class="fa fa-check"></i> 공정하게 평가해 주십시요.</li>
+                <li><i class="fa fa-check"></i> 많은사람들에게 알려주십시요.</li>
+            </ul>
+        </div><!--//container-->
+    </section><!--//features-->
+    
+    <!-- ******DOCS****** --> 
+    <section id="docs" class="docs section">
+        <div class="container">
+            <div class="docs-inner">
+            <h2 class="title text-center">Get Started</h2>            
+            <div class="block">
+                <h3 class="sub-title text-center">1. 회원가입을 합니다.</h3>
+                <img src = "first.png" style = "width: 100%;">
+            </div><!--//block-->
+            
+            <div class="block">
+                <h3 class="sub-title text-center">2. 평가기준을 살펴봅니다.</h3>
+                <img src = "second.png" style = "width: 100%;">
+            </div><!--//block-->
+            
+            <div class="block">
+                <h3 class="sub-title text-center">3. 원하는 교수님 성함을 입력합니다.</h3>
+                <img src = "third.png" style = "width: 100%;">
+            </div><!--//block-->
+            
+            <div class="block">
+                <h3 class="sub-title text-center">4. 점수주기를 클릭합니다.</h3>
+                <img src = "four.png" style = "width: 100%;">
+            </div><!--//block-->
+            
+            <div class="block">
+                <h3 class="sub-title text-center">5. 세분의 교수님에게 점수를 주었다면 기출문제를 검색합니다.</h3>
+                <img src = "five.png" style = "width: 100%;">
+            </div><!--//block-->
+            
+            
+            
+            </div><!--//docs-inner-->         
+        </div><!--//container-->
+    </section><!--//features-->
+    
+   
+    <!-- ******CONTACT****** --> 
+    <section id="contact" class="contact section has-pattern">
+        <div class="container">
+            <div class="contact-inner">
+                <h2 class="title  text-center">Contact</h2>
+                <p class="intro  text-center">간단한 개발하게 된 배경입니다^^ㅎㅎ</p>
+                <div class="author-message">                      
+                    <div class="profile">
+                        <img class="img-responsive" src="duck.jpg" alt="" />
+                    </div><!--//profile-->
+                    <div class="speech-bubble">
+                        <h3 class="sub-title">Q1. 교수님을 평가하다니요? 학생으로서 해도 되나요?</h3>
+                        <p>우선 저는 누구보다 교수님들을 존경하고 사랑합니다.
+                        <p>앞서 언급했듯 교수님 자체를 평가하는게 아니라 교수님의 스타일을 파악하여 자신에게 알맞는 교수님을 알아보고 수강을 신청할 수 있는데 있습니다.
+                        한학기가 끝나면 학점을 열람하기 전 평가하는 항목이 있지만 그 결과물은 학생들에게 제공되지 않습니다. 이에 조금더 학생의 입장에 본 평가항목을 통해 
+                        학생들의 질높은 수업 권리를 찾기를 희망합니다.</p>
+                        <p>항상 감사드립니다. 교수님.</p>
+                        <br><br><br>
+                        
+                        <h3 class="sub-title">Q2. 기출문제를 공유한다구요? 기출문제로 공부하면 안되는거 아니에요?<br>형평성에 맞지 않는거같아요.</h3>
+                        <p>맞습니다. 기출문제로 공부하여 좋은 점수를 맞는다면 기출문제 없이 열심히 공부한 사람에게는 억울한 일입니다.</p>
+                        <p>그런데 저는 그렇게 생각합니다. 시험기간이 시작되면 과선배 또는 동아리 선배들에게 시험 기출문제를 얻어갑니다.
+                        그러나 그 수업이 타과 전공이거나 학과생활 또는 동아리 활동을 하지 않는 학우라면 기출문제의 존재도 모른상태로 열심히 공부만 합니다.
+                        하지만 기출문제로 공부를 한 학생과 책만 보고 공부한 학생이라면 당연히 기출문제로 공부한 학생의 점수가 높을것이고 그로인해 책만보고
+                        성실히 공부한 학생은 차별을 받게 됩니다.
+                        이에 기출문제를 모두에게 공개하여 기출문제를 구한자와 못구한자의 성적 차이을 줄이고자 합니다. </p>
+                        <p>감사합니다.</p>
+                        <br><br><br>
+                        
+                        <h3 class="sub-title">Q3. 더 궁금하거나 버그 문의는 어디서 하나요?</h3>
+                        <p>아래 메일로 부탁드립니다^^ 감사합니다.</p>
+                        
+                    
+                    
+                   
+                    </div><!--//speech-bubble-->                        
+                </div><!--//author-message-->
+                <div class="clearfix"></div>
+                <div class="info text-center">
+                    <h4 class="sub-title">Get Connected</h4>
+                    <ul class="social-icons list-inline">
+                        <li><a href="https://www.facebook.com/3rdwavethemes" target="_blank" ><i class="fa fa-facebook"></i></a></li>
+                        <li data-toggle="modal" data-target="#exampleModal2" data-whatever="@getbootstrap" style="cursor:pointer"><a><i class="fa fa-envelope"></i></a></li>
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">문의사항</h4>
+                              </div>
+                              
+                              <div class="modal-body">
+                                <!-- email 보내기 폼-->
+                                <form class="form-horizontal" action = "/home/email_send" method = "POST" style = "color:black;">
+                                  <div class="form-group">
+                                    <label class="col-sm-2 control-label">받는이</label>
+                                    <div class="col-sm-10" style = "text-align: left; font-weight: lighter;">
+                                      <p class="form-control-static" >myprofessor_jnu@naver.com</p>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputsender" class="col-sm-2 control-label">보내는이</label>
+                                    <div class="col-sm-10">
+                                      <input type="email" class="form-control" name = "send_user" id="inputsender" placeholder="보내는 이메일을 입력해주세요">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">제목</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name = "send_title" id="title" placeholder="제목을 입력해주세요">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="content" class="col-sm-2 control-label">내용</label>
+                                    <div class="col-sm-10">
+                                      <textarea class="form-control" name = "send_content" id="content" placeholder="내용을 입력해주세요"></textarea>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                  </div>
+                                </form>
+                                
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                    </ul>
+                </div><!--//info-->
+            </div><!--//contact-inner-->
+        </div><!--//container-->
+    </section><!--//contact-->  
+      
+    <%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>
+     
+         
+ 

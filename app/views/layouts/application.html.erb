@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/plugins/prism/prism.css">
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="/css/styles.css">
+
+    <link href='https://fonts.googleapis.com/earlyaccess/jejugothic.css' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+  <style>
+    .title {
+      font-family: 'Jeju Gothic', serif;
+      font-size: 50px;
+    }
+    .sub_title{
+      font-family: 'Jeju Gothic', serif;
+    }
+    input[type="password"] {
+      font-family: Arial;
+    }
+    
+    ::-webkit-input-placeholder {
+      font-family: 'Jeju Gothic', serif;
+    }
+    
+    .point_a{
+      color: red;
+      font-weight:bold;
+    }
+    .point_c{
+      color: blue;
+      font-weight:bold;
+    }
+    .scrollto{
+      font-family: 'Jeju Gothic', serif;
+    }
+    .speech-bubble{
+      font-family: 'Jeju Gothic', serif;
+    }
+    .list{
+      font-family: 'Jeju Gothic', serif;
+      
+    }
+    .intro{
+      font-family: 'Jeju Gothic', serif;
+    }
+    .content{
+       font-family: 'Jeju Gothic', serif;
+    }
+    .feature-list{
+       font-family: 'Jeju Gothic', serif;
+    }
+    .text-center{
+      font-family: 'Jeju Gothic','Times New Roman', serif ;
+    }
+    .login_form{
+       font-family: 'Jeju Gothic','Times New Roman', serif ;
+    }
+    .table{
+      font-family: 'Jeju Gothic','Times New Roman', serif ;
+    }
+    
+    .a_style{
+      font-family: 'Jeju Gothic','Times New Roman', serif ;
+      text-align: center; 
+      font-size: 40px; 
+      color: #FF1919; 
+      font-weight: bold;
+    }
+    
+    .b_style{
+      font-family: 'Jeju Gothic','Times New Roman', serif ;
+      text-align: center; 
+      font-size: 40px; 
+      color: #3399FF; 
+      font-weight: bold;
+    }
+    
+    .c_style{
+      font-family: 'Jeju Gothic','Times New Roman', serif ;
+      text-align: center; 
+      font-size: 40px; 
+      color: #33CC33; 
+      font-weight: bold;
+    }
+
+
+    .professor_name_font{
+      font-size:40px;
+    }
+    .professor_space_font{
+      font-size: 20px;
+      color: #A4A4A4;
+    }
+    .imageing{
+      position: relative;
+      top: -40px;
+    }
+    .font_main{
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .font_sub{
+      
+      font-size: 25px;
+    }
+   
+    
+  </style>
+</head>
+<body data-spy="scroll">
+
+
+
+<%= yield %>
+
+
+
+    <!-- Javascript -->          
+    <script type="text/javascript" src="/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/plugins/jquery-migrate-1.2.1.min.js"></script>    
+    <script type="text/javascript" src="/plugins/jquery.easing.1.3.js"></script>   
+    <script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.min.js"></script>     
+    <script type="text/javascript" src="/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
+    <script type="text/javascript" src="/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="/js/main.js"></script> 
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="/dark-unica.js"></script> 
+  
+  
+</body>
+
+</html>

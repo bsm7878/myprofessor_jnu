@@ -1,0 +1,165 @@
+    <!-- ******HEADER****** --> 
+    <header id="header" class="header" style = "z-index: 1;" >  
+        <div class="container">            
+            <h1 class="logo pull-left">
+                <a href="/">
+                    <img src = "/logo.png" style = "width: 180px; height: 50px; " />
+                </a>
+                
+                
+                
+            </h1><!--//logo-->              
+            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->            
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="list" data-toggle="modal" data-target="#exampleModal_3" style="cursor:pointer;">기출문제 검색</a></li>
+                            <div class="modal fade" id="exampleModal_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel" style = "font-size: 30px;">검색</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      
+                                    <!-- 기출문제 검색 폼 시작 -->
+                                    <form class="form-horizontal" action = "/home/search" method ="GET">
+                                          <div class="form-group">
+                                            <div class="col-sm-12">
+                                              <input type="text" class="form-control" name = "course"  placeholder="과목명을 입력해주세요">
+                                            </div>
+                                          </div>
+                                          <div class = "row">
+                                              <div class = "col-md-5"></div>
+                                              <div class = "col-md-2">
+                                                  <div class="form-group">
+                                                      <button type="submit" class="btn btn-primary" style = "width: 100%;">검색하기</button>
+                                                  </div>
+                                              </div>
+                                              <div class = "col-md-5"></div>
+                                          </div>
+                                          
+                                    </form>
+                                    <!-- 기출문제 검색 폼 끝 -->
+                                    
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> 
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->
+        </div>
+    </header><!--//header-->
+    
+    <!-- ******ABOUT****** --> 
+    <section id="about" class="about section" style = "z-index: -1;">
+        <div class="container" style = "margin-bottom: 400px;">
+            <h2 class="title text-center" style = "margin-top: 80px;">검색결과</h2>
+            
+            <% if current_user.email == "bsm7878@naver.com" %>
+            <!--족보 올리기 시작 -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">족보올리기</button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                          </div>
+                          
+                          <div class="modal-body">
+                            <form action = "/home/upload" method ="POST" enctype="multipart/form-data">
+                              <div class="form-group">
+                                <input type="text" class="form-control" name = "course" placeholder = "과목">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control" name = "professor" placeholder = "교수">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control" name = "year" placeholder = "해당년도">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control" name = "middle" placeholder = "중간/기말">
+                              </div>
+                              <input type = "file" name = "fileing"/>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Send</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            <!--족보 올리기 끝 -->
+            <% end %>
+            <div class="row">
+                <div class="item col-md-12 col-sm-12 col-xs-12">
+                    <% unless @tests.empty? %><!--2start-->  
+                    
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>과목</th>
+                          <th>교수</th>
+                          <th>해당년도</th>
+                          <th>구분</th>
+                          <th>다운</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% count = 1 %>
+                        <% @tests.each do |x| %> <!--1start-->
+                        
+                        <tr>
+                          <th scope="row"><%= count %></th>
+                          <td><%= x.course %></td>
+                          <td><%= x.professor %></td>
+                          <td><%= x.year %></td>
+                          <td><%= x.middle %></td>
+                          <td>
+                              <a href = "<%= x.fileing.url %>">
+                                <button type="button" class="btn btn-success btn-xs">
+                                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <% count = count + 1 %>
+                        <% end %> <!--1end-->
+                      </tbody>
+                    </table>
+                    <% else %>
+                    <div class = "row">
+                        <div class = "col-md-4"></div>
+                        <div class = "col-md-4">
+                            <img src = "/sorry.png" style = "width: 100%; height: 100%;">
+                        </div>
+                        <div class = "col-md-4"></div>
+                    </div>
+                    <% end %> <!--2end--> 
+                    
+                    
+                </div><!--//item-->
+            </div><!--//row-->            
+        </div><!--//container-->
+    </section><!--//about-->
+
+ 
+            
+    
+      
+    <%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>
+     
+         
+ 

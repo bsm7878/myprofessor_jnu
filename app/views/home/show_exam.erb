@@ -1,0 +1,75 @@
+    <!-- ******HEADER****** --> 
+    <header id="header" class="header">  
+        <div class="container">            
+            <h1 class="logo pull-left">
+                <a href="/">
+                    <img src = "/logo.png" style = "width: 180px; height: 50px; " />
+                </a>
+            </h1><!--//logo-->              
+            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->            
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->
+        </div>
+    </header><!--//header-->
+    
+    <!-- ******ABOUT****** --> 
+    <section id="about" class="about section">
+        <div class="container" style = "margin-bottom: 400px;">
+            <h2 class="title text-center" style = "margin-top: 80px;">보관중인 기출문제 </h2>
+                <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>과목</th>
+                          <th>교수</th>
+                          <th>해당년도</th>
+                          <th>구분</th>
+                          <th>다운</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% count = 1 %>
+                        
+                        <% @tests.each do |x| %>  
+                        <tr>
+                          <th scope="row"><%= count %></th>
+                          <td><%= x.course %></td>
+                          <td><%= x.professor %></td>
+                          <td><%= x.year %></td>
+                          <td><%= x.middle %></td>
+                          <td>
+                              <a href = "<%= x.fileing.url %>">
+                                <button type="button" class="btn btn-success btn-xs">
+                                    <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                                </button>
+                              </a>
+                          </td>
+                        </tr>
+                        <% count = count + 1 %>
+                        <% end %>
+                        
+                        
+                      </tbody>
+                </table>        
+                
+        </div><!--//container-->
+    </section><!--//about-->
+
+ 
+      
+    <%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>
+     
+         
+ 
