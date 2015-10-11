@@ -115,17 +115,20 @@ class HomeController < ApplicationController
   
   
   def write_save
-    uri = URI("http://homeedu.jnu.ac.kr/?c=102/768")
+    uri = URI("http://eee.jnu.ac.kr/user/indexSub.action?codyMenuSeq=13342&siteId=eee&menuUIType=top")
     html_doc = Nokogiri::HTML(Net::HTTP.get(uri))
     i= 0 
-      while i < 4
+      while i < 8
         professors = Professor.new
-        img_sub = html_doc.css("div.photo // img")[i].attr('src')
-        professors.img = "http://homeedu.jnu.ac.kr/" + img_sub
-        professors.name = html_doc.css("div.info // h4")[i].inner_text
+        img_sub = html_doc.css("div.professor_img // img")[i].attr('src')
+        professors.img = "http://eee.jnu.ac.kr//" + img_sub
+        professors.name = html_doc.css("dl.professor_dl1 // strong")[i].inner_text
+        professors.space = html_doc.css("dl.professor_dl2 // dd")[i].inner_text
+        professors.phone = html_doc.css("dl.professor_dl3 // dd")[i].inner_text
+        professors.email = html_doc.css("dl.professor_dl4 // dd")[i].inner_text
         professors.save
         i = i + 1
-      end 
+      end
   end
   
   def email_send
