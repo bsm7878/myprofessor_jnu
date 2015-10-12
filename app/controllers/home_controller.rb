@@ -120,84 +120,6 @@ class HomeController < ApplicationController
   
   
   def write_save
-<<<<<<< HEAD
-   pro = Professor.new
-    pro.img = "http://psyche.jnu.ac.kr/upload/profInfo/1399497089991_1.jpg"
-    pro.name = "박태진"
-    pro.space = "사회대 476"
-    pro.phone = "530-2653"
-    pro.email = "tpark@chonnam.ac.kr"
-    pro.save
-    
-    pro1 = Professor.new
-    pro1.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400429169140_1.jpg"
-    pro1.name = "윤가현"
-    pro1.space = "사회대 477"
-    pro1.save
-    
-    pro2 = Professor.new
-    pro2.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400429597645_1.jpg"
-    pro2.name = "김문수"
-    pro2.space = "사회대 315"
-    pro2.save
-    
-    pro3 = Professor.new
-    pro3.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400429959047_1.jpg"
-    pro3.name = "강영신"
-    pro3.space = "사회대 357"
-    pro3.save
-    
-    pro4 = Professor.new
-    pro4.img = "http://psyche.jnu.ac.kr/upload/profInfo/1404738657116_1.jpg"
-    pro4.name = "이혜진"
-    pro4.space = "사회대 337"
-    pro4.save 
-    
-    pro5 = Professor.new
-    pro5.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400430502126_1.jpg"
-    pro5.name = "이종목"
-    pro5.space = "사회대 411"
-    pro5.save
-    
-    pro6 = Professor.new
-    pro6.img = "http://psyche.jnu.ac.kr/upload/profInfo/1439973208865_1.jpg"
-    pro6.name = "한규석"
-    pro6.space = "사회대 435"
-    pro6.save
-    
-    pro7 = Professor.new
-    pro7.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400429320343_1.jpg"
-    pro7.name = "노안영"
-    pro7.space = "사회대 438"
-    pro7.save
-    
-    pro8 = Professor.new
-    pro8.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400429842367_1.jpg"
-    pro8.name = "신현균"
-    pro8.space = "사회대 217"
-    pro8.save
-    
-    pro9 = Professor.new
-    pro9.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400430129162_1.jpg"
-    pro9.name = "박형인"
-    pro9.space = "사회대 352"
-    pro9.save
-    
-    pro10 = Professor.new
-    pro10.img = "http://psyche.jnu.ac.kr/upload/profInfo/1428972373358_1.jpg"
-    pro10.name = "황석현"
-    pro10.space = "사회대 258"
-    pro10.save
-    
-    pro11 = Professor.new
-    pro11.img = "http://psyche.jnu.ac.kr/upload/profInfo/1400430710933_1.jpg"
-    pro11.name = "오수성"
-    pro11.space = "사회대 454"
-    pro11.save
-    
-
-     
-=======
     uri = URI("http://eee.jnu.ac.kr/user/indexSub.action?codyMenuSeq=13342&siteId=eee&menuUIType=top")
     html_doc = Nokogiri::HTML(Net::HTTP.get(uri))
     i= 0 
@@ -212,7 +134,6 @@ class HomeController < ApplicationController
         professors.save
         i = i + 1
       end
->>>>>>> bf042669c8d0b4a133defe7006e4b652dd3257f1
   end
   
 
