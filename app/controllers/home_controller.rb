@@ -5,11 +5,12 @@ class HomeController < ApplicationController
    if user_signed_in?
     @exam_count = Check.where(:user_email => current_user.email).count  
    end
+   @all_professor = Professor.all
 
   end
   
   def show
-    
+        
     
         @pro = Professor.where(:name => params[:professor]).take
    
@@ -120,7 +121,25 @@ class HomeController < ApplicationController
   
   
   def write_save
-    
+    uri = URI("https://nokogiri-bsm7878-2.c9.io/")
+    html_doc = Nokogiri::HTML(Net::HTTP.get(uri))
+    i = 0
+    j = 0
+      while i < 744
+        professors = Professor.new
+        
+        img_sub = html_doc.css("div.thumbnail // img")[i].attr('src')
+        professors.img = img_sub
+        professors.name = html_doc.css("div.caption // p")[j].inner_text
+        professors.space = html_doc.css("div.caption // p")[j+1].inner_text
+        professors.phone = html_doc.css("div.caption // p")[j+2].inner_text
+        professors.email  =html_doc.css("div.caption // p")[j+3].inner_text
+        professors.save
+        
+        i = i + 1
+        j = j + 4
+        
+      end
   end
   
 
