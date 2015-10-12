@@ -10,7 +10,12 @@ class HomeController < ApplicationController
   
   def show
     
-      @pro = Professor.where(:name => params[:professor]).take #검색결과 불러오기
+    
+        @pro = Professor.where(:name => params[:professor]).take
+   
+      
+      
+      
       unless @pro.nil?
 
         @checks = Check.where(:professor_id => @pro.id ) #해당교수님 정보 불러오기
@@ -130,6 +135,8 @@ class HomeController < ApplicationController
         i = i + 1
       end
   end
+  
+
   
   def email_send
     
