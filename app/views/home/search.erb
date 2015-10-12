@@ -65,7 +65,7 @@
         <div class="container" style = "margin-bottom: 400px;">
             <h2 class="title text-center" style = "margin-top: 80px;">검색결과</h2>
             
-            <% if current_user.email == "bsm7878@naver.com" %>
+            
             <!--족보 올리기 시작 -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">족보올리기</button>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,7 +73,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                            <h4 class="modal-title" id="exampleModalLabel">기출문제 공유하기</h4>
                           </div>
                           
                           <div class="modal-body">
@@ -101,7 +101,7 @@
                       </div>
                     </div>
             <!--족보 올리기 끝 -->
-            <% end %>
+            
             <div class="row">
                 <div class="item col-md-12 col-sm-12 col-xs-12">
                     <% unless @tests.empty? %><!--2start-->  
