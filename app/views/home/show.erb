@@ -207,7 +207,13 @@
       var options = {
         title: "평균 비교",
         height: 500,
- 
+         vAxis: {
+            viewWindowMode:'explicit',
+            viewWindow: {
+              max: 4.5,
+              min: 2.5
+            }
+        },
         backgroundColor: '#F5F5F5',
         bar: {groupWidth: "10%"},
         legend: { position: "none" },
