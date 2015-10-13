@@ -1,240 +1,6 @@
+
  
-   <!-- pie chart js 시작-->
-   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-   <!-- pie chart js 끝-->
-   
-   <!-- 학점 chart 시작 -->
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['A+', <%= @a_count_a %>],
-          ['B+', <%= @a_count_b %>],
-          ['C+', <%= @a_count_c %>]
-         
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          backgroundColor: '#F5F5F5',
-          chartArea:{left:0,top:0,width:"100%",height:"100%"},
-          height: 300,
-          width: 300,
-          fontSize: 13
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-   <!-- 학점 chart 끝 -->
-   
-   <!-- 시험 chart 시작 -->
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['A+', <%= @b_count_a %>],
-          ['B+', <%= @b_count_b %>],
-          ['C+', <%= @b_count_c %>]
-         
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          backgroundColor: '#F5F5F5',
-          chartArea:{left:0,top:0,width:"100%",height:"100%"},
-          height: 300,
-          width: 300,
-          fontSize: 13
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_2'));
-
-        chart.draw(data, options);
-      }
-    </script>
-   <!-- 시험 chart 끝 -->
-   
-   <!-- 과제 chart 시작 -->
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['A+', <%= @c_count_a %>],
-          ['B+', <%= @c_count_b %>],
-          ['C+', <%= @c_count_c %>]
-         
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          backgroundColor: '#F5F5F5',
-          chartArea:{left:0,top:0,width:"100%",height:"100%"},
-          height: 300,
-          width: 300,
-          fontSize: 13
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3'));
-
-        chart.draw(data, options);
-      }
-    </script>
-   <!-- 과제 chart 끝 -->
-   
-   <!-- 강의력 chart 시작 -->
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['A+', <%= @d_count_a %>],
-          ['B+', <%= @d_count_b %>],
-          ['C+', <%= @d_count_c %>]
-         
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          backgroundColor: '#F5F5F5',
-          chartArea:{left:0,top:0,width:"100%",height:"100%"},
-          height: 300,
-          width: 300,
-          fontSize: 13
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_4'));
-
-        chart.draw(data, options);
-      }
-    </script>
-   <!-- 강의력 chart 끝 -->
-   
-   <!-- 재미 chart 시작 -->
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['A+', <%= @e_count_a %>],
-          ['B+', <%= @e_count_b %>],
-          ['C+', <%= @e_count_c %>]
-         
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          backgroundColor: '#F5F5F5',
-          chartArea:{left:0,top:0,width:"100%",height:"100%"},
-          height: 300,
-          width: 300,
-          fontSize: 13
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_5'));
-
-        chart.draw(data, options);
-      }
-    </script>
-   <!-- 재미 chart 끝 -->
-   
-   <!-- 소통 chart 시작 -->
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['A+', <%= @f_count_a %>],
-          ['B+', <%= @f_count_b %>],
-          ['C+', <%= @f_count_c %>]
-         
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          backgroundColor: '#F5F5F5',
-          chartArea:{left:0,top:0,width:"100%",height:"100%"},
-          height: 300,
-          width: 300,
-          fontSize: 13
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_6'));
-
-        chart.draw(data, options);
-      }
-    </script>
-   <!-- 소통 chart 끝 -->
-   
-   <!-- 분야별 평균 chart 시작 -->
-   <script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ["Element", "Density", { role: "style" } ],
-        ["내평균", <%= @user_average_final %>, "#b87333"],
-        ["전체평균", <%= @all_average_final %>, "#198D19"],
-        ["남성평균", <%= @men_final %>, "#1E22D5"],
-        ["여성평균", <%= @women_final %>, "#E225C6"]
-      ]);
-
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-
-      var options = {
-        title: "평균 비교",
-        height: 500,
-         vAxis: {
-            viewWindowMode:'explicit',
-            viewWindow: {
-              max: 4.5,
-              min: 2.5
-            }
-        },
-        backgroundColor: '#F5F5F5',
-        bar: {groupWidth: "10%"},
-        legend: { position: "none" },
-        fontName: 'Jeju Gothic'
-      };
-
-      
-      
-      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-      chart.draw(view, options);
-  }
-  
-  function getValueAt(column, dataTable, row) {
-        return dataTable.getFormattedValue(row, column);
-      }
-  
-  </script>
-   <!-- 분야별 평균 chart 끝 -->
- 
-   
- 
     <!-- ******HEADER****** --> 
     <header id="header" class="header" style = "z-index:1; background-color:white;">  
         <div class="container">            
@@ -616,7 +382,8 @@
         
     </section><!--//how-->
     
-    <% unless @user.nil? %>
+    <%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>
+    
     <script>
         $(function () {
 
@@ -675,10 +442,247 @@
 
     });
 });
-    </script>    
-<% end %>
-    
-    <%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>
+    </script>  
+ 
+ 
+ 
+ 
+   <!-- pie chart js 시작-->
+   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+   <!-- pie chart js 끝-->
+   
+   <!-- 학점 chart 시작 -->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A+', <%= @a_count_a %>],
+          ['B+', <%= @a_count_b %>],
+          ['C+', <%= @a_count_c %>]
+         
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          backgroundColor: '#F5F5F5',
+          chartArea:{left:0,top:0,width:"100%",height:"100%"},
+          height: 300,
+          width: 300,
+          fontSize: 13
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+   <!-- 학점 chart 끝 -->
+   
+   <!-- 시험 chart 시작 -->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A+', <%= @b_count_a %>],
+          ['B+', <%= @b_count_b %>],
+          ['C+', <%= @b_count_c %>]
+         
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          backgroundColor: '#F5F5F5',
+          chartArea:{left:0,top:0,width:"100%",height:"100%"},
+          height: 300,
+          width: 300,
+          fontSize: 13
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_2'));
+
+        chart.draw(data, options);
+      }
+    </script>
+   <!-- 시험 chart 끝 -->
+   
+   <!-- 과제 chart 시작 -->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A+', <%= @c_count_a %>],
+          ['B+', <%= @c_count_b %>],
+          ['C+', <%= @c_count_c %>]
+         
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          backgroundColor: '#F5F5F5',
+          chartArea:{left:0,top:0,width:"100%",height:"100%"},
+          height: 300,
+          width: 300,
+          fontSize: 13
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3'));
+
+        chart.draw(data, options);
+      }
+    </script>
+   <!-- 과제 chart 끝 -->
+   
+   <!-- 강의력 chart 시작 -->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A+', <%= @d_count_a %>],
+          ['B+', <%= @d_count_b %>],
+          ['C+', <%= @d_count_c %>]
+         
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          backgroundColor: '#F5F5F5',
+          chartArea:{left:0,top:0,width:"100%",height:"100%"},
+          height: 300,
+          width: 300,
+          fontSize: 13
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_4'));
+
+        chart.draw(data, options);
+      }
+    </script>
+   <!-- 강의력 chart 끝 -->
+   
+   <!-- 재미 chart 시작 -->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A+', <%= @e_count_a %>],
+          ['B+', <%= @e_count_b %>],
+          ['C+', <%= @e_count_c %>]
+         
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          backgroundColor: '#F5F5F5',
+          chartArea:{left:0,top:0,width:"100%",height:"100%"},
+          height: 300,
+          width: 300,
+          fontSize: 13
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_5'));
+
+        chart.draw(data, options);
+      }
+    </script>
+   <!-- 재미 chart 끝 -->
+   
+   <!-- 소통 chart 시작 -->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A+', <%= @f_count_a %>],
+          ['B+', <%= @f_count_b %>],
+          ['C+', <%= @f_count_c %>]
+         
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          backgroundColor: '#F5F5F5',
+          chartArea:{left:0,top:0,width:"100%",height:"100%"},
+          height: 300,
+          width: 300,
+          fontSize: 13
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_6'));
+
+        chart.draw(data, options);
+      }
+    </script>
+   <!-- 소통 chart 끝 -->
+   
+   <!-- 분야별 평균 chart 시작 -->
+   <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["내평균", <%= @user_average_final %>, "#b87333"],
+        ["전체평균", <%= @all_average_final %>, "#198D19"],
+        ["남성평균", <%= @men_final %>, "#1E22D5"],
+        ["여성평균", <%= @women_final %>, "#E225C6"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "평균 비교",
+        height: 500,
+         vAxis: {
+            viewWindowMode:'explicit',
+            viewWindow: {
+              max: 4.5,
+              min: 2.5
+            }
+        },
+        backgroundColor: '#F5F5F5',
+        bar: {groupWidth: "10%"},
+        legend: { position: "none" },
+        fontName: 'Jeju Gothic'
+      };
+
+      
+      
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  
+  function getValueAt(column, dataTable, row) {
+        return dataTable.getFormattedValue(row, column);
+      }
+  
+  </script>
+   <!-- 분야별 평균 chart 끝 -->
+ 
+   
+ 
     
 
 
