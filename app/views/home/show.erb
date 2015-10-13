@@ -382,7 +382,9 @@
         
     </section><!--//how-->
     
-    <%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>
+    <%= render :partial => "home/footer" %> 
+    
+    
     
     <script>
         $(function () {
@@ -432,18 +434,32 @@
 
         series: [{
             name: '평균',
-            data: [<%= @a_average %>, <%= @b_average %>, <%= @c_average %>, <%= @d_average %>, <%= @e_average %>, <%= @f_average %>],
+            data: [
+                
+                <% if @a_average.nil? %>
+                0, 0, 0, 0, 0, 0
+                <% else %>
+                <%= @a_average %>, <%= @b_average %>, <%= @c_average %>, <%= @d_average %>, <%= @e_average %>, <%= @f_average %>
+                <% end %>
+                ],
             pointPlacement: 'on'
         }, {
             name: '내점수',
-            data: [<%= @user.a %>, <%= @user.b %>, <%= @user.c %>, <%= @user.d %>, <%= @user.e %>, <%= @user.f %>],
+            data: [
+                
+                <% if @user.nil? %>
+                0, 0, 0, 0, 0, 0
+                <% else %>
+                <%= @user.a %>, <%= @user.b %>, <%= @user.c %>, <%= @user.d %>, <%= @user.e %>, <%= @user.f %>
+                <% end %>
+                ],
             pointPlacement: 'on'
         }]
 
     });
 });
     </script>  
- 
+
  
  
  

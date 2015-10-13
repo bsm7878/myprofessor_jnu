@@ -7,6 +7,7 @@ class HomeController < ApplicationController
    end
    @all_professor = Professor.all
    @all_test = Test.all
+   @all_user = User.all
 
   end
   
@@ -17,7 +18,7 @@ class HomeController < ApplicationController
    
       
       
-      
+     
       unless @pro.nil?
 
         @checks = Check.where(:professor_id => @pro.id ) #해당교수님 정보 불러오기
