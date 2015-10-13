@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     @exam_count = Check.where(:user_email => current_user.email).count  
    end
    @all_professor = Professor.all
+   @all_test = Test.all
 
   end
   
