@@ -155,4 +155,11 @@ class HomeController < ApplicationController
     redirect_to '/'
     
   end
+  
+  
+  def delete
+    user_delete = User.find(params[:id])
+    user_delete.destroy
+    redirect_to '/'
+  end
 end

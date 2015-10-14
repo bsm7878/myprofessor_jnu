@@ -3,7 +3,6 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
       }
       
-  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user    
   root "home#index"
   get ":controller(/:action(/:id))"
   post ":controller(/:action(/:id))"
