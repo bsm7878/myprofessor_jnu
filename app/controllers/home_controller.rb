@@ -156,6 +156,24 @@ class HomeController < ApplicationController
     
   end
   
+  def email_all
+    
+  end
+  
+  def email_allsend
+    
+    send_title = params[:send_title]
+    send_content = params[:send_content]
+    
+    users = User.all
+    
+    users.each do |x|
+      Mailpost.all_email(x.email, send_title, send_content).deliver_now
+    end
+    redirect_to '/'
+ 
+  end
+  
   
   def delete
     user_delete = User.find(params[:id])
