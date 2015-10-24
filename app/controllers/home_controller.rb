@@ -157,7 +157,7 @@ class HomeController < ApplicationController
   end
   
   def email_all
-    
+    @users = User.all
   end
   
   def email_allsend

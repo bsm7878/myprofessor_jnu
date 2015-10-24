@@ -25,4 +25,13 @@
                                     <button type="submit" class="btn btn-primary">Send</button>
                                   </div>
                                 </form>
+                                
+                                <% @users.each do |x| %>
+                                    <%= x.email %><br>
                                 <% end %>
+                                
+                                
+                                
+                                <% end %>
+                                
+                                
