@@ -33,7 +33,7 @@
     
     
     
-
+    
     <!-- ******ABOUT****** --> 
     <section id="about" class="about section">
         <div> <!-- 배경 이미지 시작 -->
@@ -355,8 +355,12 @@
               <tbody>
                 <tr>
                   <td>
-                      <% @admissions = User.where(:email => x.user_email).take %>
-                      <%= @admissions.admission.split(/20/)[1] %>학번
+                      <% @admission = User.where(:email => x.user_email).take %>
+                      <% unless @admisson.nil? %>
+                      <%= @admission.admission.split(/20/)[1] %>학번
+                      <% else %>
+                      탈퇴회원
+                      <% end %>
                   </td>
                   <td><%= x.course %></td>
                   <td><%= ((x.a + x.b + x.c + x.d + x.e + x.f)/6).round(1) %></td>

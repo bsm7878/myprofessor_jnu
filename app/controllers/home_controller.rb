@@ -13,14 +13,21 @@ class HomeController < ApplicationController
   
   def show
         
-    
-        @pro = Professor.where(:name => params[:professor]).take
-   
-      
-      
-     
-      unless @pro.nil?
 
+      #@pro = Professor.where(:name => params[:professor]).take
+      pros = Professor.where(:name => params[:professor])
+      if pros.count > 2
+        @pro = pros.last
+        
+      else
+        @pro = pros.first
+        
+        
+      end
+      
+      
+      unless @pro.nil?
+        
         @checks = Check.where(:professor_id => @pro.id ) #해당교수님 정보 불러오기
         
         abc = @checks.count #해당교수님 정보 개수
@@ -81,7 +88,7 @@ class HomeController < ApplicationController
       else
         redirect_to '/'
       end
-   
+      
   end
   
   def save

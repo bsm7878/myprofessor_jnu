@@ -82,8 +82,8 @@
             <p><%= @all_professor.count - 744 %>분의 전남대 교수님이 등록되어 있습니다.</p><br>
             <p><%= @all_user.count %>명의 전남대 학우분들이 함께하고 있습니다.</p><br>
             <p><%= @all_test.count %>개의 기출문제가 등록되어 있습니다.</p>
-            
-            
+            <p><% a = User.all %></p>
+
             
             <ul class="meta list-inline">
                 <% if user_signed_in? %>
@@ -297,7 +297,7 @@
                 <div class="info text-center">
                     <h4 class="sub-title">Get Connected</h4>
                     <ul class="social-icons list-inline">
-                        <li><a href="https://www.facebook.com/3rdwavethemes" target="_blank" ><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.facebook.com/myprofessor1?ref=hl" target="_blank" ><i class="fa fa-facebook"></i></a></li>
                         <li data-toggle="modal" data-target="#exampleModal2" data-whatever="@getbootstrap" style="cursor:pointer"><a><i class="fa fa-envelope"></i></a></li>
                         <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
