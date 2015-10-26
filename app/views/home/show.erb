@@ -355,11 +355,11 @@
               <tbody>
                 <tr>
                   <td>
-                      <% @admission = User.where(:email => x.user_email).take %>
-                      <% unless @admisson.nil? %>
-                      <%= @admission.admission.split(/20/)[1] %>학번
-                      <% else %>
+                      <% admissions = User.where(:email => x.user_email).take %>
+                      <% if admissions.nil? %>
                       탈퇴회원
+                      <% else %>
+                      <%= admissions.admission.split(/20/)[1] %>학번
                       <% end %>
                   </td>
                   <td><%= x.course %></td>
