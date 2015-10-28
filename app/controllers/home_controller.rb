@@ -15,7 +15,7 @@ class HomeController < ApplicationController
   def show
         
 
-      @pro = Professor.where(:id => params[:pro_id]).take
+      @pro = Professor.where(:name => params[:professor]).take
       
       
       

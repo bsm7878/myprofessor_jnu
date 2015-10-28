@@ -77,18 +77,13 @@
                     <div class = "col-md-6">
                         <form action = "/home/show" method = "GET">
                             
-                          
-                          
-                          <div class="form-group">
-                              <select class="js-example-basic-single form-control" name ="pro_id" >
-                              <% @professors.each do |y| %> 
-                                  <option value = "<%= y.id %>" ><%= y.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><%= y.space %></span></option>
-                              <% end %>
-                              </select> 
-                          </div>
+                           <div class="form-group">
+                               <input type="text" class="form-control" name = "professor" id="exampleInput1" placeholder="교수님명을 입력해주세요. 단, 사범대 교수님은 성함 뒤에 '교수'를 붙혀주세요. ex_ 홍길동 교수">
+                           </div>
                           <div id = "wrapper">
                               <button type="submit" class="btn btn-primary">검색</button>
                           </div> 
+                          
                          
                         </form>    
                     </div>
