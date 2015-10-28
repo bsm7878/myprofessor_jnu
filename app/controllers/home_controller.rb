@@ -15,16 +15,9 @@ class HomeController < ApplicationController
   def show
         
 
-      #@pro = Professor.where(:name => params[:professor]).take
-      pros = Professor.where(:name => params[:professor])
-      if pros.count > 2
-        @pro = pros.last
-        
-      else
-        @pro = pros.first
-        
-        
-      end
+      @pro = Professor.where(:id => params[:pro_id]).take
+      
+      
       
       
       unless @pro.nil?
