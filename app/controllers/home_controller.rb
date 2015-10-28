@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: :index
   def index
-
+   @professor = Professor.find(1)
+   @professors = Professor.all
    if user_signed_in?
     @exam_count = Check.where(:user_email => current_user.email).count  
    end
