@@ -1,4 +1,7 @@
-    
+    <!-- select2 -->
+    <link href="select2/select2.css" rel="stylesheet" />
+    <link href="select2/select2-bootstrap.css" rel="stylesheet" />
+    <script src="select2/select2.min.js"></script>
     
     <!-- ******HEADER****** --> 
     <header id="header" class="header" style = "z-index:1;">  
@@ -75,17 +78,31 @@
                 <div class = "row">
                     <div class = "col-md-3"></div>
                     <div class = "col-md-6">
-                        <form action = "/home/show" method = "GET">
-                            
+                        
+                        
+                        <form action = "/home/show" method = "POST">
+                           <!--
                            <div class="form-group">
                                <input type="text" class="form-control" name = "professor" id="exampleInput1" placeholder="교수님명을 입력해주세요. 단, 사범대 교수님은 성함 뒤에 '교수'를 붙혀주세요. ex_ 홍길동 교수">
                            </div>
                           <div id = "wrapper">
                               <button type="submit" class="btn btn-primary">검색</button>
                           </div> 
-                          
-                         
-                        </form>    
+                          -->
+                          <div class="form-group">
+                              <select class="js-example-basic-single form-control" name = "pro_id" data-placeholder="교수님 성함을 입력해주세요" multiple  >
+                              <% @all_professor.each do |y| %> 
+                                  <option value = "<%= y.id %>"><%= y.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= y.space %></option>
+                              <% end %>
+            
+                              </select> 
+                          </div>
+                          <div id = "wrapper">
+                              <button type="submit" class="btn btn-primary">검색</button>
+                          </div> 
+                        </form>  
+                        
+                        
                     </div>
                     <div class = "col-md-3"></div>
                 </div>
@@ -95,6 +112,7 @@
             <br><br>
             <p><%= @all_professor.count %>분의 전남대 교수님이 등록되어 있습니다.</p><br>
             <p><%= @all_user.count %>명의 전남대 학우분들이 함께하고 있습니다.</p><br>
+            <p><%= @checks.count %>개의 강의평가가 이루어졌습니다.</p><br>
             <p><%= @all_test.count %>개의 기출문제가 등록되어 있습니다.</p>
             <p><% a = User.all %></p>
 
@@ -366,7 +384,11 @@
     <!-- select2.js 시작-->    
     
     <script>
-      $(".js-example-basic-single").select2();
+      $(".js-example-basic-single").select2({
+            placeholder: function(){
+                $(this).data('placeholder');
+            }
+      });
     </script> 
     <!-- select2.js 끝 -->
     

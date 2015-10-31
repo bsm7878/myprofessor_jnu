@@ -1,21 +1,22 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: :index
   def index
-   @professor = Professor.find(1)
-   @professors = Professor.all
+   
+   
    if user_signed_in?
     @exam_count = Check.where(:user_email => current_user.email).count  
    end
    @all_professor = Professor.all
    @all_test = Test.all
    @all_user = User.all
+   @checks = Check.all
 
   end
   
   def show
         
 
-      @pro = Professor.where(:name => params[:professor]).take
+      @pro = Professor.where(:id => params[:pro_id]).take
       
       
       
@@ -99,7 +100,7 @@ class HomeController < ApplicationController
     checks.course = params[:course]
     checks.comment = params[:comment]
     checks.save
-    redirect_to :back
+    redirect_to '/'
   end
   
   def search  #족보 검색 컨트롤러
