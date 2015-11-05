@@ -2,6 +2,9 @@
     <link href="select2/select2.css" rel="stylesheet" />
     <link href="select2/select2-bootstrap.css" rel="stylesheet" />
     <script src="select2/select2.min.js"></script>
+    <!-- counter up -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="/counterup.js"></script>
     
     <!-- ******HEADER****** --> 
     <header id="header" class="header" style = "z-index:1;">  
@@ -24,7 +27,7 @@
                     <ul class="nav navbar-nav">
                         <li class="nav-item"><a class="scrollto list" href="#about">무엇?</a></li>
                         <li class="nav-item"><a class="scrollto list" href="#features">약속</a></li>
-                        <li class="nav-item"><a class="scrollto list" href="#docs">사용법</a></li>
+                        <li class="nav-item"><a class="scrollto list" href="#docs">참여대학</a></li>
                         <li class="nav-item"><a class="scrollto list" href="#contact">문의</a></li>
                         
                         <% unless user_signed_in? %>
@@ -55,7 +58,7 @@
                             </div>
                         <% else %>
                             <li class="nav-item"><a class="list" href="/users/sign_out">로그아웃</a></li>
-                            <li class="nav-item"><a class="list" href="/home/delete/<%= current_user.id %>">회원탈퇴</a></li>
+                            <li class="nav-item"><a class="list" href="/home/delete_view">회원탈퇴</a></li>
                         <% end %>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
@@ -78,17 +81,8 @@
                 <div class = "row">
                     <div class = "col-md-3"></div>
                     <div class = "col-md-6">
-                        
-                        
-                        <form action = "/home/show" method = "POST">
-                           <!--
-                           <div class="form-group">
-                               <input type="text" class="form-control" name = "professor" id="exampleInput1" placeholder="교수님명을 입력해주세요. 단, 사범대 교수님은 성함 뒤에 '교수'를 붙혀주세요. ex_ 홍길동 교수">
-                           </div>
-                          <div id = "wrapper">
-                              <button type="submit" class="btn btn-primary">검색</button>
-                          </div> 
-                          -->
+                        <!-- 검색 -->
+                        <form action = "/home/show" method = "GET">
                           <div class="form-group">
                               <select class="js-example-basic-single form-control" name = "pro_id" data-placeholder="교수님 성함을 입력해주세요" multiple  >
                               <% @all_professor.each do |y| %> 
@@ -101,25 +95,64 @@
                               <button type="submit" class="btn btn-primary">검색</button>
                           </div> 
                         </form>  
-                        
-                        
+                        <br>
+                        <!-- 교수님 추가 -->
+                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#professor_plus" data-whatever="@getbootstrap" style = "outline: none;">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> 교수님 추가
+                        </button>
+                        <div class="modal fade" id="professor_plus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">교수님 추가하기</h4>
+                              </div>
+                              <div class="modal-body">
+                                <!-- 교수님 추가 form 시작 -->  
+                                <form action  = "/home/professor_plus" class="form-horizontal"  method = "GET">
+                                  <div class="form-group">
+                                    <label for="plus_name" class="col-sm-2 control-label" style = "color: black;">성함</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name = "nameing" id="plus_name" placeholder="성함을 입력해주세요 ex)홍길동">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="plus_space" class="col-sm-2 control-label" style = "color: black;">전공</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name = "major" id="plus_space" placeholder="전공을 입력해주세요 ex)경영대">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="plus_space" class="col-sm-2 control-label" style = "color: black;">과목</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name = "course" id="plus_space" placeholder="대표 개설과목을 입력해주세요 ex)예술과미학">
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                                    <button type="submit" class="btn btn-primary">저장</button>
+                                  </div>
+                                </form>
+                                <!-- 교수님 추가 form 끝 -->  
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                     <div class = "col-md-3"></div>
                 </div>
-                
             </p>
             <!-- 검색 폼 종료 -->
             <br><br>
-            <p><%= @all_professor.count %>분의 전남대 교수님이 등록되어 있습니다.</p><br>
-            <p><%= @all_user.count %>명의 전남대 학우분들이 함께하고 있습니다.</p><br>
-            <p><%= @checks.count %>개의 강의평가가 이루어졌습니다.</p><br>
-            <p><%= @all_test.count %>개의 기출문제가 등록되어 있습니다.</p>
-            <p><% a = User.all %></p>
+            <!-- 정보,통계 -->
+            <p><span class="counter"><%= @all_professor.count %></span>분의 전남대 교수님이 등록되어 있습니다.</p><br>
+            <p><span class="counter"><%= @all_user.count %></span>명의 전남대 학우분들이 함께하고 있습니다.</p><br>
+            <p><span class="counter"><%= @checks.count %></span>개의 강의평가가 이루어졌습니다.</p><br>
+            <p><span class="counter"><%= @all_test.count %></span>개의 기출문제가 등록되어 있습니다.</p>
+
 
             
             <ul class="meta list-inline">
-                <% if user_signed_in? %>
-                <% if @exam_count > 2 %>
                 <li class="nav-item"><a class="list" data-toggle="modal" data-target="#exampleModal_2" style="cursor:pointer;">기출문제 검색</a></li>
                             <div class="modal fade" id="exampleModal_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
@@ -149,8 +182,6 @@
                                 </div>
                               </div>
                 <li><a href="/home/show_exam" >모든 기출문제 보기</a></li>
-                <% end %>
-                <% end %>
             </ul><!--//meta-->        
             
             
@@ -247,34 +278,17 @@
     <section id="docs" class="docs section">
         <div class="container">
             <div class="docs-inner">
-            <h2 class="title text-center">Get Started</h2>            
-            <div class="block">
-                <h3 class="sub-title text-center">1. 회원가입을 합니다.</h3>
-                <img src = "first.png" style = "width: 100%;">
-            </div><!--//block-->
-            
-            <div class="block">
-                <h3 class="sub-title text-center">2. 평가기준을 살펴봅니다.</h3>
-                <img src = "second.png" style = "width: 100%;">
-            </div><!--//block-->
-            
-            <div class="block">
-                <h3 class="sub-title text-center">3. 원하는 교수님 성함을 입력합니다.</h3>
-                <img src = "third.png" style = "width: 100%;">
-            </div><!--//block-->
-            
-            <div class="block">
-                <h3 class="sub-title text-center">4. 점수주기를 클릭합니다.</h3>
-                <img src = "four.png" style = "width: 100%;">
-            </div><!--//block-->
-            
-            <div class="block">
-                <h3 class="sub-title text-center">5. 세분의 교수님에게 점수를 주었다면 기출문제를 검색합니다.</h3>
-                <img src = "five.png" style = "width: 100%;">
-            </div><!--//block-->
-            
-            
-            
+            <h2 class="title text-center">참여 대학</h2>            
+            <div class = "row"> 
+               
+                <div class = "col-md-3" >
+                    <img src = "/jnu.png" style = "height: 200px;" alt ="전남대학교">    
+                </div>
+                <div class = "col-md-3"></div>
+                <div class = "col-md-3"></div>
+                <div class = "col-md-3"></div>
+ 
+            </div>
             </div><!--//docs-inner-->         
         </div><!--//container-->
     </section><!--//features-->
@@ -389,11 +403,31 @@
                 $(this).data('placeholder');
             }
       });
+      
+     jQuery(document).ready(function($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+        
+    
     </script> 
     <!-- select2.js 끝 -->
     
-<%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>
-  
+<%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 -->
+
+<!-- 기출문제 3개 미만 못들어가기 -->
+<script>
+$(document).ready(function(){
+    $(".meta").click(function(){
+        if(<%= @exam_count %> < 3){
+            alert("3개의 강의평가를 해주세요^^");
+            window.location.replace("/");
+        }
+    });
+});
+</script>  
   
          
  

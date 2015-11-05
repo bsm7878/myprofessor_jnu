@@ -13,15 +13,24 @@ class HomeController < ApplicationController
 
   end
   
+  def professor_plus #교수님 추가 콘트롤러
+    saveing = Professor.new
+    saveing.name = params[:nameing]
+    saveing.space = params[:major]
+    saveing.email = params[:course]
+    saveing.save
+    redirect_to '/'
+    
+  end
+  
   def show
         
-
       @pro = Professor.where(:id => params[:pro_id]).take
       
       
       
       
-      unless @pro.nil?
+      
         
         @checks = Check.where(:professor_id => @pro.id ) #해당교수님 정보 불러오기
         
@@ -65,7 +74,7 @@ class HomeController < ApplicationController
          unless @user.nil?
          user_average = (@user.a + @user.b + @user.c + @user.d + @user.e + @user.f)/6
          @user_average_final = user_average.round(1) #내평균
-         
+         end
          all_average = (@a_average + @b_average + @c_average + @d_average + @e_average + @f_average)/6
          @all_average_final = all_average.round(1)  #전체평균
          
@@ -79,10 +88,8 @@ class HomeController < ApplicationController
          women_final_sub = women_middle/ (women.count * 6).round(1) 
          @women_final = women_final_sub.round(1) #여성평균
          
-         end
-      else
-        redirect_to '/'
-      end
+         
+      
       
   end
   
@@ -100,7 +107,7 @@ class HomeController < ApplicationController
     checks.course = params[:course]
     checks.comment = params[:comment]
     checks.save
-    redirect_to '/'
+    redirect_to :back
   end
   
   def search  #족보 검색 컨트롤러
@@ -165,9 +172,17 @@ class HomeController < ApplicationController
 
   
   
-  def delete
-    user_delete = User.find(params[:id])
-    user_delete.destroy
-    redirect_to '/'
+  def delete #회원탈퇴
+    if current_user.valid_password?(params[:bye])
+      user_delete = User.find(current_user.id)
+      user_delete.destroy
+      redirect_to '/'
+    else
+      redirect_to :back
+    end
+  end
+  
+  def delete_view
+    
   end
 end

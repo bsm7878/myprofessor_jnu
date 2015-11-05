@@ -1,0 +1,59 @@
+<header id="header" class="header">  
+        <div class="container">            
+            <h1 class="logo pull-left">
+                <a href="/">
+                    <img src = "/logo.png" style = "width: 180px; height: 50px; " />
+                </a>
+            </h1><!--//logo-->              
+            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->            
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="scrollto list" href="#features">강의평가</a></li>
+                        <li class="nav-item"><a class="scrollto list" href="#features">검색</a></li>   
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->
+        </div>
+    </header><!--//header-->
+  
+  
+  
+  
+  <!-- ******PROMO****** -->
+    <section id="promo" class="promo section offset-header"  >
+        <div class="container text-center">
+          <div class = "row">
+          <div class = "col-md-4"></div>
+          <div class = "col-md-4">
+            
+            <!-- 회원탈퇴 폼 시작 -->
+            <p class="intro">
+                회원탈퇴  
+                <form action = "/home/delete" method = "POST" class="form-horizontal">
+                  <div class="form-group">
+                      <input type="password" name="bye" class="form-control"placeholder="비밀번호를 입력해주세요" style="display: block; width: 100%;">
+                  </div>
+                  <div class="actions">
+                    <input type="submit" class="btn btn-warning" value="회원탈퇴" style="display: block; width: 100%;"/>
+                  </div>
+                </form>    
+            </p>
+            <!-- 회원가입 폼 종료 -->  
+          </div>
+          <div class = "col-md-4"></div>
+          </div>
+            <ul class="meta list-inline">
+                
+            </ul><!--//meta-->
+        </div><!--//container-->
+    </section><!--//promo-->
+    
+  <%= render :partial => "home/footer" %> <!-- 만든이 불러 오기 --!>

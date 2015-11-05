@@ -1,5 +1,4 @@
     
- 
 
     <!-- ******HEADER****** --> 
     <header id="header" class="header" style = "z-index:1; background-color:white;">  
@@ -41,7 +40,11 @@
         </div> <!-- 배경 이미지 끝 -->
         <div class="container" >
             <div class="title text-center imageing" style = "margin: -30px">
-                <img src="<%= @pro.img %>" alt="..." class="img-thumbnail" style = "width: 200px; height: 200px">
+                <% unless @pro.img.nil? %>
+                    <img src="<%= @pro.img %>" alt="교수님" class="img-thumbnail" style = "width: 200px; height: 200px">
+                <% else %>
+                    <img src="/photo.jpg" alt="교수님 사진이 없습니다." class="img-thumbnail" style = "width: 200px; height: 200px">
+                <% end %>
             </div>
             <p class="text-center" >
                 <span class = "professor_name_font"><%= @pro.name %></span> <br>
@@ -52,7 +55,12 @@
                 <div class = "col-md-3"></div>
                 <div class = "col-md-6" style = "border-style: solid; border-color: #525252; position: relative" >
                     <div class = "col-md-4" style ="border-right: solid #525252; text-align: center;"><span class = "font_main"><%= @pro.phone %></span> <br><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><span class = "font_sub">phone</span></div>
-                    <div class = "col-md-4" style ="border-right: solid #525252; text-align: center;" ><span class = "font_main"><%= @pro.email %></span> <br><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span class = "font_sub">E-mail</span></div>
+                    <% unless @pro.phone.nil? %>
+                        <div class = "col-md-4" style ="border-right: solid #525252; text-align: center;" ><span class = "font_main"><%= @pro.email %></span> <br><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span class = "font_sub">E-mail</span></div>
+                    <% else %>
+                        <div class = "col-md-4" style ="border-right: solid #525252; text-align: center;" ><span class = "font_main"><%= @pro.email %></span> <br><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span class = "font_sub">과목</span></div>
+                    <% end %>
+                    
                     <% if @user.nil? %>
                     <div class = "col-md-4" style =" text-align:center;">
                         
@@ -146,11 +154,11 @@
                                       </label>
                                     </div>
                                     <br><br>
-                                    <label for="course">수강과목</label>
-                                    <input type = "text" class="form-control" name = "course" id = "course" placeholder = "수강과목을 적어주세요">
+                                    <label for="course_check">수강과목</label>
+                                    <input type = "text" class="form-control" name = "course" id = "course_check" placeholder = "수강과목을 적어주세요">
                                     <br><br>
-                                    <label for="comment">한줄 입력</label>
-                                    <textarea class="form-control"  name = "comment" id = "comment" rows="3" placeholder = "한마디 남겨주세요"></textarea>
+                                    <label for="comment_check">한줄 입력</label>
+                                    <textarea class="form-control"  name = "comment" id = "comment_check" rows="3" placeholder = "한마디 남겨주세요"></textarea>
                                     <br><br>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -196,7 +204,7 @@
         </div><!--//container-->
     </section><!--//about-->
     
-    <% unless @user.nil? %>
+    
     <!--과목별 평균 띠 시작-->
     <section id="features" class="features section" style = "padding-top: 30px; padding-bottom: 0px;">
         <div class = "row">
@@ -315,7 +323,7 @@
                             <div id="columnchart_values" style = "width: 100%;"></div>        
                     </div><!--//content-->
                 </div><!--//item--> 
-                <% end %>
+               
             </div><!--//row-->            
         </div><!--//container-->
     </section><!--//about-->
@@ -679,7 +687,7 @@
             viewWindowMode:'explicit',
             viewWindow: {
               max: 4.5,
-              min: 2.5
+              min: 2.0
             }
         },
         backgroundColor: '#F5F5F5',
@@ -700,8 +708,7 @@
   
   </script>
    <!-- 분야별 평균 chart 끝 -->
- 
-    
+
    
  
     
