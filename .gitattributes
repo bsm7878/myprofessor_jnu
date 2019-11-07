@@ -1,2 +1,5 @@
 * linguist-vendored
 *.rb linguist-vendored=false
+
+* linguist-vendored
+*.rb linguist-vendored=false
