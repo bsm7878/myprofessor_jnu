@@ -4,6 +4,8 @@
 
 > 개발기간(15.07 ~ 15.10)
 
+> ~~http://www.myprofessor.xyz~~
+
 > 운영기간(15.10 ~ 16.11)
 
 > <a href ="https://brunch.co.kr/@bsm7878/41">Brunch</a>
