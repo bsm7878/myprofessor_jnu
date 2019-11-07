@@ -1,24 +1,24 @@
+<h2>우리교수님은?</h2>
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+> 전남대학교 교수님들의 과목 평가 및 기출문제 공유 플랫폼 
 
+> <a href ="https://brunch.co.kr/@bsm7878/41">Brunch</a>
+<hr>
+<h3>개발 프레임워크</h3>
+<hr>
 
-Welcome to your Rails project on Cloud9 IDE!
+>IDE - C9
 
-To get started, just do the following:
+>언어 - Ruby
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://checksystem-template-bsm7878-2.c9.io/).
+>프레임워크 - Ruby On Rails
 
-Happy coding!
-The Cloud9 IDE team
+>DB - sqlite
 
+>서버 - Nginx, Aws
 
-## Support & Documentation
+>분석 - Google Analytics
 
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+>버전관리 - Github
+
+>UI - Bootstrap
